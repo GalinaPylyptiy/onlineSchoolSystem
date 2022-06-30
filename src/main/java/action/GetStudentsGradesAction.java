@@ -1,11 +1,9 @@
 package action;
 import dao.LocaleDAO;
 import dao.StudentAssessmentDAO;
-import dao.SubjectDAO;
 import dao.SubjectLocaleDAO;
 import daoImpl.LocaleDAOImpl;
 import daoImpl.StudentAssessmentDAOImpl;
-import daoImpl.SubjectDAOImpl;
 import daoImpl.SubjectLocaleDAOImpl;
 import entity.Locale;
 import entity.Student;
