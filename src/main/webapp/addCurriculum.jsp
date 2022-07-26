@@ -5,16 +5,9 @@
 <fmt:setLocale value="${sessionScope.locale}"/>
 <fmt:setBundle basename="locale"/>
 <html>
-<style>
-    body {
-        background-image: url('img/backgroundTeacher.jpg');
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-</style>
 <head>
     <title>Curriculum record</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 
 </head>
 <body>
@@ -28,20 +21,17 @@
 <table border="1" width="1200" align="center" cellspacing="6" cellpadding="20">
     <tr>
         <th><label><strong><fmt:message key="msg.lesson.date"/> </strong></label> </th>
-        <th><label><strong><fmt:message key="msg.choose.teacher"/></strong></label> </th>
         <th><label><strong><fmt:message key="msg.choose.subject"/></strong></label> </th>
         <th><label><strong><fmt:message key="msg.choose.level"/></strong></label></th>
         <th><label><strong><fmt:message key="msg.enter.lessonTheme"/></strong></label></th>
         <th><label><strong><fmt:message key="msg.enter.homeTask"/> </strong></label></th>
     </tr>
     <tr align="center">
-        <td><label><input type="date" name="lessonDate"></label></td>
-        <td>
-            <label> <select name="teacherId">
-                <option>${teacher.id}</option>
-            </select></label>
-        </td>
+        <label> <select name="teacherId" hidden>
+        <option>${teacher.id}</option>
+     </select></label>
 
+        <td><label><input type="date" name="lessonDate"></label></td>
         <td>
             <label><select name="subject">
             <c:forEach var="subject" items="${subjectList}">

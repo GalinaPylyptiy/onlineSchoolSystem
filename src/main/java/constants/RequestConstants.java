@@ -29,6 +29,9 @@ public class RequestConstants {
     public static final String DELETE_SCHEDULE_RECORD = "/deleteScheduleRecord";
     public static final String DELETE_TEACHER_RECORD = "/deleteTeacherRecord";
     public static final String DELETE_STUDENT_RECORD = "/deleteStudentRecord";
+    public static final String GET_STUDENT_ASSESSMENT_LIST = "/getStudentAssessmentList";
+    public static final String TEACHER_EXIT_SYSTEM = "/teacherExitSystem";
+    public static final String STUDENT_EXIT_SYSTEM = "/studentExitSystem";
 
 
 }

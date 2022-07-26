@@ -2,8 +2,8 @@ package action;
 
 import dao.LevelDAO;
 import dao.ScheduleRecordDao;
-import daoImpl.LevelDAOImpl;
-import daoImpl.ScheduleRecordDAOImpl;
+import dao.impl.LevelDAOImpl;
+import dao.impl.ScheduleRecordDAOImpl;
 import entity.Level;
 import entity.ScheduleRecord;
 import entity.Student;

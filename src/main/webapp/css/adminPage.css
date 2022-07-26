@@ -1,0 +1,19 @@
+body {
+    background-image: url("../img/adminPage.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h1{
+    color: black;
+    text-align: center;
+}
+input[type=submit] {
+    border: none;
+    height: 50px;
+    width: 250px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: lightpink;
+    font-style: oblique;
+}

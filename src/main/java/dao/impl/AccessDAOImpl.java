@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 
 import connectionPool.ConnectionPool;
 import org.apache.logging.log4j.LogManager;

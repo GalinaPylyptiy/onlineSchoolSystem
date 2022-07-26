@@ -1,20 +1,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<fmt:setLocale value="${sessionScope.locale}"/>
+<fmt:setBundle basename="locale"/>
 <html>
 <head>
     <title>Login as a student</title>
-    <style>
-        body {
-            background-image: url("img/studentBackground.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-    </style>
+
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
-<fmt:setLocale value="${sessionScope.locale}"/>
-<fmt:setBundle basename="locale"/>
 <form  action="/studentLogin"  method="POST">
     <fieldset>
         <legend> Sign in </legend>

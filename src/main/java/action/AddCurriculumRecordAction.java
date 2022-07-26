@@ -1,10 +1,10 @@
 package action;
 
-import constants.JSPPagesNameConstants;
 import dao.*;
-import daoImpl.*;
+import dao.impl.*;
 import entity.*;
 import static constants.ParameterAndAttributeNameConstants.*;
+import static constants.ErrorConstants.*;
 import static constants.JSPPagesNameConstants.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,12 +21,20 @@ public class AddCurriculumRecordAction implements Action{
     private LevelDAO levelDAO = new LevelDAOImpl();
     private LocaleDAO localeDAO = new LocaleDAOImpl();
     private CurriculumRecordDAO curriculumRecordDAO = new CurriculumRecordDAOImpl();
+    private final String curriculumRecordError = "Date can not be empty.Please, enter date...";
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String date = request.getParameter(LESSON_DATE);
-        LocalDate lessonDate = LocalDate.parse(date);
+        LocalDate lessonDate = null;
+        try {
+           lessonDate = LocalDate.parse(date);
+        }catch (NullPointerException ex){
+            request.setAttribute(CURRICULUM_RECORD_ERROR,curriculumRecordError);
+            request.getRequestDispatcher(CURRICULUM_RECORD_ERROR_JSP).forward(request, response);
+            return;
+        }
         String subjectName = request.getParameter(SUBJECT);
         Subject subject = subjectLocaleDAO.getSubjectByLocaleName(subjectName);
         Long teacherId = Long.parseLong(request.getParameter(TEACHER_ID));

@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 import connectionPool.ConnectionPool;
 import dao.LevelDAO;
 import entity.Level;
@@ -15,8 +15,6 @@ public class LevelDAOImpl implements LevelDAO {
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
     private static final String GET_LEVEL_BY_LEVEL_NAME = "SELECT * FROM student_level WHERE level_name = ?";
     private static final String GET_LEVELS_LIST = "SELECT* FROM student_level";
-
-
 
     @Override
     public Level getLevelByLevelName(String levelName){

@@ -1,7 +1,7 @@
 package action;
 
 import dao.ScheduleRecordDao;
-import daoImpl.ScheduleRecordDAOImpl;
+import dao.impl.ScheduleRecordDAOImpl;
 import entity.ScheduleRecord;
 import entity.Teacher;
 import javax.servlet.ServletException;

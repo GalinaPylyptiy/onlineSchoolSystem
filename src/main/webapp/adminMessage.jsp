@@ -1,16 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setBundle basename="locale"/>
 <html>
 <head>
     <title>Message</title>
-    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
-<fmt:setBundle basename="locale"/>
+
 <h1><fmt:message key="msg.successful.record.add"/> </h1>
 <c:set var="scheduleRecord" value="${requestScope.record}"/>
 <c:set  var="teacher" value="${requestScope.teacher}"/>
-
 <c:set var="student" value="${requestScope.student}"/>
 
 <h2> ${scheduleRecord.dayOfWeek} ${scheduleRecord.time}  ${scheduleRecord.level.name} ${scheduleRecord.subject.name}

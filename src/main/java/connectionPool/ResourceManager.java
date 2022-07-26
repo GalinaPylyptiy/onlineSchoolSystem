@@ -10,7 +10,6 @@ public class ResourceManager {
     public static ResourceManager getInstance(){
      return instance;
     }
-
     public String getValue(String key){
         return bundle.getString(key);
     }

@@ -1,6 +1,6 @@
 package action;
 import dao.*;
-import daoImpl.*;
+import dao.impl.*;
 import entity.Locale;
 import entity.Subject;
 import entity.TeacherType;

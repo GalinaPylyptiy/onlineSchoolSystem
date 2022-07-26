@@ -11,7 +11,7 @@ public class Locale implements Serializable {
 
     private Locale(){
        id=1;
-       shortName="ru_RU";
+       shortName="ru-RU";
        fullName="РУССКИЙ";
     }
     public Locale(int id, String shortName, String fullName) {

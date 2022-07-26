@@ -1,6 +1,6 @@
 package action;
 import dao.*;
-import daoImpl.*;
+import dao.impl.*;
 import entity.Locale;
 import entity.Subject;
 import entity.Teacher;
@@ -25,8 +25,7 @@ public class TeacherRegisterAction implements Action {
     private List<Subject> subjectsList = new ArrayList<>();
     private LocaleDAO localeDAO = new LocaleDAOImpl();
 
-    @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private Teacher getNewTeacher(HttpServletRequest request){
         String lastName = request.getParameter(LAST_NAME);
         String firstName = request.getParameter(FIRST_NAME);
         String middleName = request.getParameter(MIDDLE_NAME);
@@ -41,33 +40,31 @@ public class TeacherRegisterAction implements Action {
             subjectsList.add(subject);
         }
         Boolean admin = Boolean.parseBoolean(request.getParameter(ADMIN));
+        return new Teacher(lastName, firstName, middleName, login, hashedPassword, subjectsList, type, admin);
+    }
 
-        Teacher newTeacher = new Teacher(lastName, firstName, middleName, login, hashedPassword, subjectsList, type, admin);
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String login = request.getParameter(LOGIN);
+        String password = request.getParameter(PASSWORD);
+        String hashedPassword = Security.toHashPassword(password);
+        Teacher newTeacher = getNewTeacher(request);
         teacherDAO.addTeacher(newTeacher);
-
         Teacher teacher=teacherDAO.getTeacherByLoginAndPassword(login, hashedPassword);
         for (Subject subject : subjectsList) {
             teacherSubjectDAO.addTeacherSubject(teacher, subject);
         }
-
         HttpSession session = request.getSession();
         String localeShortName =(String) session.getAttribute(LOCALE);
         Locale locale = localeDAO.getLocaleByShortName(localeShortName);
         if(locale==null){
             locale = Locale.getDefault();
         }
-
         List<Teacher> teacherList = teacherDAO.getAllTeachers();
         List<Subject> subjectLocaleList = teacherSubjectDAO.getLocaleSubjectsOfaTeacher(teacher, locale);
-
         session.setAttribute(NEW_TEACHER, teacher);
         session.setAttribute(TEACHER_LIST, teacherList);
         session.setAttribute(SUBJECT_LOCALE_LIST, subjectLocaleList);
-
         request.getRequestDispatcher(TEACHER_LIST_JSP).forward(request, response);
-
-
     }
-
-
 }

@@ -1,8 +1,7 @@
-package daoImpl;
+package dao.impl;
 import connectionPool.ConnectionPool;
 import dao.StudentAssessmentDAO;
 import entity.*;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static constants.DBColumnNamesConstants.*;
@@ -84,6 +83,9 @@ public class StudentAssessmentDAOImpl implements StudentAssessmentDAO {
         } catch (SQLException e) {
             LOGGER.error(e.getMessage(), e.fillInStackTrace() );
         }
+        finally {
+            connectionPool.releaseConnection(connection);
+        }
         return assessmentList;
     }
 
@@ -110,6 +112,7 @@ public class StudentAssessmentDAOImpl implements StudentAssessmentDAO {
             }
         } catch (SQLException e) {
            LOGGER.error(e.getMessage(), e.fillInStackTrace());
+
         } finally {
             connectionPool.releaseConnection(connection);
         }

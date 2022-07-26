@@ -7,6 +7,7 @@
 <html>
 <head>
     <title>Student list</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 <c:set var="studnet" value="${sessionScope.student}"/>

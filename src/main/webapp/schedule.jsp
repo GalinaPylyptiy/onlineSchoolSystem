@@ -6,8 +6,8 @@
 <fmt:setBundle basename="locale"/>
 <html>
 <head>
-    <title>timetable</title>
-
+    <title>Schedule</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 
@@ -64,6 +64,6 @@
 
     <p> <input type="submit" name="submit" value="<fmt:message key="button.add.schedule"/> "></p>
 </form>
-
+<a href="<c:url value="admin.jsp"/> "> <fmt:message key="button.cancel"/> </a>
 </body>
 </html>

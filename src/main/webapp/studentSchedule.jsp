@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Student schedule</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 

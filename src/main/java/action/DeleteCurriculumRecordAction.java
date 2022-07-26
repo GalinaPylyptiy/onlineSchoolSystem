@@ -2,8 +2,8 @@ package action;
 
 import dao.CurriculumRecordDAO;
 import dao.SubjectLocaleDAO;
-import daoImpl.CurriculumRecordDAOImpl;
-import daoImpl.SubjectLocaleDAOImpl;
+import dao.impl.CurriculumRecordDAOImpl;
+import dao.impl.SubjectLocaleDAOImpl;
 import entity.CurriculumRecord;
 import entity.Level;
 import entity.Subject;

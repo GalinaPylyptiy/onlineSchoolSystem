@@ -7,7 +7,7 @@
 </head>
 <body>
 <fmt:setBundle basename="locale"/>
-<form action="/getLocaleList" method="get">
+<form action="/getLocaleList" method="post">
     <input type="submit" value="<fmt:message key="msg.choose.locale"/> ">
 </form>
 </body>

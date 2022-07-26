@@ -1,24 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@page isELIgnored="false" %>
+<fmt:setLocale value="${sessionScope.locale}"/>
+<fmt:setBundle basename="locale"/>
 <html>
 <head>
     <title>Enter some info</title>
-    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <%@page isELIgnored="false" %>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
-<fmt:setLocale value="${sessionScope.locale}"/>
-<fmt:setBundle basename="locale"/>
+
 <c:set var="teacher" value="${sessionScope.teacher}"/>
 <c:set var="subjectList" value="${sessionScope.subjectList}"/>
 <c:set  var="levelList" value="${sessionScope.levelList}"/>
 
-<h2>${teacher.id} ${teacher.lastName} ${teacher.firstName}</h2>
+<h1>${teacher.id} ${teacher.lastName} ${teacher.firstName}</h1>
 
 <form action="/getStudentsForAssessment" method="post">
 
-    <h3><label><strong><fmt:message key="msg.choose.teacher"/> </strong></label></h3>
-    <label> <select name="teacherId">
+    <label> <select name="teacherId" hidden>
         <option><c:out value="${teacher.id}"/></option>
     </select></label>
 
@@ -37,6 +38,10 @@
     </select></label>
 
    <p><input type="submit" name="submit" value="<fmt:message key="button.add.record"/> "></p>
+
+    <p><input type="submit" formaction="/getStudentAssessmentList" name="submit" value="<fmt:message key="button.get.grades"/> "></p>
+
 </form>
+<a href="<c:url value="teacher.jsp"/> "> <fmt:message key="button.cancel"/> </a>
 </body>
 </html>

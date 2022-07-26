@@ -1,6 +1,6 @@
 package action;
 import dao.LocaleDAO;
-import daoImpl.LocaleDAOImpl;
+import dao.impl.LocaleDAOImpl;
 import entity.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +21,6 @@ public class GetLocaleListAction implements Action {
         List<Locale> localeList=localeDAO.getAllLocales();
         session.setAttribute(LOCALE_LIST, localeList);
         request.getRequestDispatcher(INDEX_JSP).forward(request,response);
-
-
 
     }
 }

@@ -4,10 +4,13 @@ import constants.ParameterAndAttributeNameConstants;
 import dao.CurriculumRecordDAO;
 import dao.StudentAssessmentDAO;
 import dao.StudentDAO;
-import daoImpl.CurriculumRecordDAOImpl;
-import daoImpl.StudentAssessmentDAOImpl;
-import daoImpl.StudentDAOImpl;
+import dao.impl.CurriculumRecordDAOImpl;
+import dao.impl.StudentAssessmentDAOImpl;
+import dao.impl.StudentDAOImpl;
 import entity.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import static constants.ParameterAndAttributeNameConstants.*;
 import static constants.JSPPagesNameConstants.*;
 import static constants.ErrorConstants.*;
@@ -21,20 +24,32 @@ import java.util.List;
 
 public class AddAssessmentRecordAction implements Action {
 
+    private Logger logger = LogManager.getLogger(this.getClass().getName());
     private StudentDAO studentDAO = new StudentDAOImpl();
     private CurriculumRecordDAO curriculumRecordDAO = new CurriculumRecordDAOImpl();
     private StudentAssessmentDAO studentAssessmentDAO = new StudentAssessmentDAOImpl();
+    private int grade;
+    private final String assessmentError = "Please, choose grade!";
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     HttpSession session = request.getSession();
     Teacher teacher = (Teacher)session.getAttribute(TEACHER);
     Subject subject = (Subject)session.getAttribute(SUBJECT);
+    Level level =(Level) session.getAttribute(LEVEL);
     Long studentId = Long.parseLong(request.getParameter(STUDENT_ID));
     long recordId = Long.parseLong(request.getParameter(RECORD_ID));
-    int grade = Integer.parseInt(request.getParameter(GRADE));
+    String gradeString = request.getParameter(GRADE);
+    try {
+        grade = Integer.parseInt(gradeString);
+    } catch (NumberFormatException ex){
+        logger.error(ex.getCause());
+        request.setAttribute(ASSESSMENT_ERROR, assessmentError);
+        request.getRequestDispatcher(ASSESSMENT_ERROR_JSP).forward(request, response);
+        return;
+    }
     Student student = studentDAO.getStudentById(studentId);
-    Level level =(Level) session.getAttribute(LEVEL);
     CurriculumRecord record = curriculumRecordDAO.getRecordById(recordId);
     LocalDate assessmentDate = LocalDate.now();
     StudentAssessment newAssessment = new StudentAssessment(record, student, grade, assessmentDate);

@@ -1,13 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@page isELIgnored="false" %>
+<fmt:setBundle basename="locale"/>
 <html>
 <head>
     <title>My home task</title>
-    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <%@page isELIgnored="false" %>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
-<fmt:setBundle basename="locale"/>
+
 <c:set var="student" value="${sessionScope.student}"/>
 <c:set var="level" value="${sessionScope.level}"/>
 <c:set var="subject" value="${sessionScope.subject}"/>
@@ -24,7 +26,11 @@
     </tr>
     <c:forEach var="record" items="${recordList}">
     <tr>
-            <td>${record.lessonDate}</td>
+            <td>
+                <fmt:parseDate var="lessonDate" value="${record.lessonDate}" pattern="yyyy-MM-dd" type="date" dateStyle="short"/>
+                <fmt:formatDate var="formatedDate" value="${lessonDate}" pattern="dd.MM.yyyy" type="date" dateStyle="short"/>
+                    ${formatedDate}
+            </td>
             <td>${record.lessonTheme}</td>
             <td>${record.homeTask}</td>
 

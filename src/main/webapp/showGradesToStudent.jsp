@@ -6,8 +6,8 @@
 <fmt:setBundle basename="locale"/>
 <html>
 <head>
-    <title>my grades</title>
-
+    <title>My grades</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 
@@ -27,7 +27,9 @@
         <c:forEach var="assessment" items="${assessmentList}">
       <tr>
         <td>
-            ${assessment.curriculumRecord.lessonDate}
+            <fmt:parseDate var="lessonDate" value="${assessment.curriculumRecord.lessonDate}" pattern="yyyy-MM-dd" type="date" dateStyle="short"/>
+            <fmt:formatDate var="formatedDate" value="${lessonDate}" pattern="dd.MM.yyyy" type="date" dateStyle="short"/>
+                ${formatedDate}
         </td>
          <td>
              ${assessment.curriculumRecord.lessonTheme}

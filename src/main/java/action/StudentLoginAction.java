@@ -2,7 +2,7 @@ package action;
 import constants.ErrorConstants;
 import dao.StudentDAO;
 import entity.Student;
-import daoImpl.StudentDAOImpl;
+import dao.impl.StudentDAOImpl;
 import util.AccessChecker;
 import util.Security;
 import static constants.ParameterAndAttributeNameConstants.*;
@@ -15,16 +15,16 @@ import java.io.IOException;
 
 public class StudentLoginAction implements Action {
 
-    private StudentDAO studentService = new StudentDAOImpl();
+    private StudentDAO studentDAO = new StudentDAOImpl();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+    HttpSession session = request.getSession(true);
     String login = request.getParameter(LOGIN);
     String password = request.getParameter(PASSWORD);
     String hashedPassword = Security.toHashPassword(password);
         if(AccessChecker.isStudentRegistered(login, hashedPassword)){
-     Student student = studentService.getStudentByLoginAndPassword(login, hashedPassword);
+     Student student = studentDAO.getStudentByLoginAndPassword(login, hashedPassword);
      session.setAttribute(STUDENT, student);
      request.getRequestDispatcher(STUDENT_JSP).forward(request, response);
         }

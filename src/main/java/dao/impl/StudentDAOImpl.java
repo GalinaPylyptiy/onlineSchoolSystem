@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 
 import connectionPool.ConnectionPool;
 import dao.StudentDAO;
@@ -6,7 +6,6 @@ import entity.Level;
 import entity.Student;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import util.Security;
 
 import java.sql.*;
 import java.util.ArrayList;

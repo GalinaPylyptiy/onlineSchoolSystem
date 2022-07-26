@@ -1,8 +1,8 @@
 package action;
 import dao.LocaleDAO;
 import dao.SubjectLocaleDAO;
-import daoImpl.LocaleDAOImpl;
-import daoImpl.SubjectLocaleDAOImpl;
+import dao.impl.LocaleDAOImpl;
+import dao.impl.SubjectLocaleDAOImpl;
 import entity.Level;
 import entity.Locale;
 import entity.Student;

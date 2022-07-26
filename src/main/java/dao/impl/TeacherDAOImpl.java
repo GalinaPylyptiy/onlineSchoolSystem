@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 import connectionPool.ConnectionPool;
 import dao.TeacherDAO;
 import dao.TeacherSubjectListDAO;

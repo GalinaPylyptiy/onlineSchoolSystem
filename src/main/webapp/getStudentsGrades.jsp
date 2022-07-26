@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Grades info page</title>
-
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 

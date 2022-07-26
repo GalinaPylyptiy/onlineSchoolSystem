@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 
 import connectionPool.ConnectionPool;
 import dao.ScheduleRecordDao;
@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static constants.DBColumnNamesConstants.*;
 import java.sql.*;
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +18,18 @@ import java.util.List;
            "VALUES (?, ?, ?, ?, ?,?) ";
    private static final String GET_LEVELS_OF_TEACHER = "SELECT DISTINCT student_level.id ,student_level.level_name FROM schedule " +
            " JOIN student_level ON student_level.id = schedule.student_level_id WHERE teacher_id = ? ";
-   private static final String GET_ALL_RECORDS ="SELECT schedule.id, student_level.level_name AS level, subject.subject_name AS subject, " +
-           " teacher.last_name AS teacher_last_name, teacher.first_name AS teacher_first_name, day_of_week,schedule.time_of_the_lesson " +
+   private static final String GET_ALL_RECORDS ="SELECT schedule.id, student_level_id, student_level.level_name AS level,subject_id, subject.subject_name AS subject, " +
+           " teacher_id, teacher.last_name AS teacher_last_name, teacher.first_name AS teacher_first_name, day_of_week,schedule.time_of_the_lesson " +
            " FROM schedule JOIN student_level ON student_level.id = schedule.student_level_id" +
            " JOIN subject ON subject.id = schedule.subject_id" +
            " JOIN teacher ON teacher.id = schedule.teacher_id WHERE schedule.is_active = 'true' ORDER BY schedule.id ";
    private static final String GET_SCHEDULE_OF_A_TEACHER = "SELECT schedule.id,time_of_the_lesson," +
            " student_level.level_name,subject.subject_name,day_of_week FROM schedule " +
            " JOIN student_level ON schedule.student_level_id=student_level.id " +
-           " JOIN subject ON schedule.subject_id=subject.id WHERE teacher_id = ? AND schedule.is_active = 'true' ";
+           " JOIN subject ON schedule.subject_id=subject.id WHERE teacher_id = ? AND schedule.is_active = 'true' ORDER BY day_of_week ";
    private static final String GET_SCHEDULE_OF_A_STUDENT = "SELECT schedule.id,time_of_the_lesson," +
            " subject.subject_name,day_of_week FROM schedule " +
-           " JOIN subject ON schedule.subject_id=subject.id WHERE student_level_id = ? AND schedule.is_active = 'true' ";
+           " JOIN subject ON schedule.subject_id=subject.id WHERE student_level_id = ? AND schedule.is_active = 'true' ORDER BY day_of_week  ";
    private static final String DELETE_RECORD_BY_ID = "UPDATE schedule SET is_active = 'false' WHERE id = ?";
 
      @Override
@@ -165,10 +164,13 @@ import java.util.List;
 
      private void setScheduleRecords(ResultSet resultSet, ScheduleRecord record, Level level, Subject subject, Teacher teacher) throws SQLException {
     record.setId(resultSet.getLong(ID));
+    level.setId(resultSet.getInt(STUDENT_LEVEL_ID));
     level.setName(resultSet.getString(LEVEL));
     record.setLevel(level);
+    subject.setId(resultSet.getInt(SUBJECT_ID));
     subject.setName(resultSet.getString(SUBJECT));
     record.setSubject(subject);
+    teacher.setId(resultSet.getLong(TEACHER_ID));
     teacher.setLastName(resultSet.getString(TEACHER_LAST_NAME));
     teacher.setFirstName(resultSet.getString(TEACHER_FIRST_NAME));
     record.setTeacher(teacher);

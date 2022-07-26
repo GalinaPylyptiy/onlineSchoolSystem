@@ -1,7 +1,7 @@
 package action;
 
 import dao.TeacherDAO;
-import daoImpl.TeacherDAOImpl;
+import dao.impl.TeacherDAOImpl;
 import entity.Teacher;
 import static constants.ParameterAndAttributeNameConstants.*;
 import static constants.JSPPagesNameConstants.*;

@@ -7,6 +7,7 @@
 
 <head>
     <title>Teacher schedule</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 <c:set var="teacher" value="${sessionScope.teacher}"/>

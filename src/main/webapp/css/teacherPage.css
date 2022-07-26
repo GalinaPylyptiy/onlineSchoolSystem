@@ -1,0 +1,36 @@
+body{
+    background-image: url("../img/teacherPage.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+h1{
+    color: darkblue;
+    text-align: center;
+}
+h2{
+    color: darkblue;
+    text-align: center;
+}
+h3{
+    color: aquamarine;
+    text-align: center;
+}
+input[type=submit] {
+    border: none;
+    height: 50px;
+    width: 300px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: aquamarine;
+    font-style: oblique;
+}
+input[type=text] {
+    border: none;
+    height: 50px;
+    width: 300px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: aquamarine;
+    font-style: oblique;
+}

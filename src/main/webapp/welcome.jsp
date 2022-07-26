@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1 align="center"><i><fmt:message key="msg.greetings"/> </i> </h1>
+<h1><i><fmt:message key="msg.greetings"/> </i> </h1>
 
 <h2><fmt:message key="label.choose.role"/></h2>
 

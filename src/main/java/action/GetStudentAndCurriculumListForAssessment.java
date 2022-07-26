@@ -1,7 +1,7 @@
 package action;
 
 import dao.*;
-import daoImpl.*;
+import dao.impl.*;
 import entity.*;
 import static constants.ParameterAndAttributeNameConstants.*;
 import static constants.JSPPagesNameConstants.*;
@@ -23,7 +23,8 @@ public class GetStudentAndCurriculumListForAssessment implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
+
+        HttpSession session = request.getSession();
         Long teacherId = Long.parseLong(request.getParameter(TEACHER_ID));
         Teacher teacher = teacherDAO.getTeacherById(teacherId);
         String subjectName = request.getParameter(SUBJECT);

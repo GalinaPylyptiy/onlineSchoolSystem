@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class StudentAssessment extends BaseEntity {
     private static final long serialVersionUID = 7297457688706372616L;
+
     private CurriculumRecord record;
     private Student student;
     private Integer grade;
@@ -46,8 +47,8 @@ public class StudentAssessment extends BaseEntity {
         return assessmentDate;
     }
 
-    public void setAssessmentDate(LocalDate evaluationDate) {
-        this.assessmentDate = evaluationDate;
+    public void setAssessmentDate(LocalDate assessmentDate) {
+        this.assessmentDate = assessmentDate;
     }
 
     @Override

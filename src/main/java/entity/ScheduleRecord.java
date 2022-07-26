@@ -1,10 +1,10 @@
 package entity;
 import java.io.Serializable;
-import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Objects;
 
 public class ScheduleRecord extends BaseEntity implements Serializable {
+
     private static final long serialVersionUID = 628395202569041685L;
     private DayOfWeek dayOfWeek;
     private LocalTime time ;
@@ -67,13 +67,12 @@ public class ScheduleRecord extends BaseEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ScheduleRecord scheduleRecord = (ScheduleRecord) o;
-        return   id.equals(scheduleRecord.id)&&
-                dayOfWeek.equals(scheduleRecord.dayOfWeek) &&
+        return  dayOfWeek.equals(scheduleRecord.dayOfWeek) &&
                 time.equals(scheduleRecord.time) &&
-                level == scheduleRecord.level &&
-                subject.equals(scheduleRecord.subject) &&
-                teacher.equals(scheduleRecord.teacher)&&
-                isActive()==scheduleRecord.isActive();
+                level.getId().equals(scheduleRecord.level.getId()) &&
+                subject.getId().equals(scheduleRecord.subject.getId()) &&
+                teacher.getId().equals(scheduleRecord.teacher.getId())&&
+                isActive().equals(scheduleRecord.isActive());
     }
 
     @Override

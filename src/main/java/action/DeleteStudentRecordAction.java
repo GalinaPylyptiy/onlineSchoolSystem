@@ -1,7 +1,7 @@
 package action;
 
 import dao.StudentDAO;
-import daoImpl.StudentDAOImpl;
+import dao.impl.StudentDAOImpl;
 import entity.Student;
 import static constants.ParameterAndAttributeNameConstants.*;
 import static constants.JSPPagesNameConstants.*;

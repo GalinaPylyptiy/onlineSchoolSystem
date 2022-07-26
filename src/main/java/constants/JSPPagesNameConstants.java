@@ -23,5 +23,8 @@ public class JSPPagesNameConstants {
     public static final String LOGIN_ERROR_JSP  = "loginError.jsp";
     public static final String TEACHER_JSP  = "teacher.jsp";
     public static final String SHOW_HOME_TASK_TO_STUDENT_JSP  = "showHomeTaskToStudent.jsp";
+    public static final String SCHEDULE_RECORD_ERROR_JSP = "scheduleRecordError.jsp";
+    public static final String CURRICULUM_RECORD_ERROR_JSP = "curriculumRecordError.jsp";
+
 
 }

@@ -4,8 +4,8 @@ import dao.LevelDAO;
 import dao.StudentDAO;
 import entity.Level;
 import entity.Student;
-import daoImpl.LevelDAOImpl;
-import daoImpl.StudentDAOImpl;
+import dao.impl.LevelDAOImpl;
+import dao.impl.StudentDAOImpl;
 import util.Security;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +33,6 @@ public class StudentRegisterAction implements Action{
         Level level = levelDAO.getLevelByLevelName(levelName);
         Student student = new Student(lastName, firstName, middleName, login, hashedPassword, level);
         studentDAO.addStudent(student);
-        System.out.println("Student active = " + student.isActive());
         List<Student> studentList = studentDAO.getAllStudents();
         HttpSession session = request.getSession();
         session.setAttribute(STUDENT, student);

@@ -34,6 +34,9 @@ public class ActionFactory {
         ACTION_MAP.put(DELETE_SCHEDULE_RECORD, new DeleteScheduleRecordAction());
         ACTION_MAP.put(DELETE_TEACHER_RECORD, new DeleteTeacherRecordAction());
         ACTION_MAP.put(DELETE_STUDENT_RECORD, new DeleteStudentRecordAction());
+        ACTION_MAP.put(GET_STUDENT_ASSESSMENT_LIST, new GetStudentAssessmentListAction());
+        ACTION_MAP.put(TEACHER_EXIT_SYSTEM, new TeacherExitSystemAction());
+        ACTION_MAP.put(STUDENT_EXIT_SYSTEM, new StudentExitSystemAction());
 
 
     }

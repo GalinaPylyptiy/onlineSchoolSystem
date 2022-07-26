@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 
 import connectionPool.ConnectionPool;
 import dao.CurriculumRecordDAO;
@@ -9,12 +9,12 @@ import entity.Teacher;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import static constants.DBColumnNamesConstants.*;
 
 public class CurriculumRecordDAOImpl implements CurriculumRecordDAO {
+
     private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
     private ConnectionPool connectionPool = ConnectionPool.getInstance();
 
@@ -27,8 +27,6 @@ public class CurriculumRecordDAOImpl implements CurriculumRecordDAO {
     private static final String UPDATE_RECORD = "UPDATE curriculum SET lesson_date = ?,lesson_theme=?, home_task = ? WHERE curriculum.id = ?";
     private static final String GET_RECORD_BY_ID = "SELECT * FROM curriculum WHERE id = ? AND is_active = 'true'";
     private static final String DELETE_RECORD = "UPDATE curriculum SET is_active = 'false' WHERE curriculum.id = ?";
-
-
 
     @Override
     public void addCurriculumRecord(CurriculumRecord record) {

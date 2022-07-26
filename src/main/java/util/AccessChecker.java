@@ -1,5 +1,5 @@
 package util;
-import daoImpl.AccessDAOImpl;
+import dao.impl.AccessDAOImpl;
 import java.util.Map;
 
 public class AccessChecker {

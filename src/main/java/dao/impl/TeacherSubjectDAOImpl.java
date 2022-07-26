@@ -1,11 +1,10 @@
-package daoImpl;
+package dao.impl;
 
 import connectionPool.ConnectionPool;
 import dao.TeacherSubjectListDAO;
 import entity.Locale;
 import entity.Subject;
 import entity.Teacher;
-import entity.TeacherType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

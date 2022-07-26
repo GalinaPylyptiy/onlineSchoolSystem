@@ -8,7 +8,7 @@ public class EncodingFilter implements Filter {
     private String contentType = "text/html;charset=UTF-8";
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
-            request.setCharacterEncoding(encoding);
+           request.setCharacterEncoding(encoding);
            response.setContentType(contentType);
            filterChain.doFilter(request, response);
 

@@ -1,19 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-  <style>
-     body {
-         background-image: url("img/backgroundWelcome.jpg");
-         background-size: cover;
-         background-repeat: no-repeat;
-         background-attachment: fixed;
-     }
- </style>
-
     <title>Initial page</title>
-
+<link type="text/css" rel="stylesheet" href="<c:url value="css/indexPage.css"/> "/>
 </head>
 <body>
 <c:import url="chooseLocale.jsp"/>
@@ -27,7 +19,7 @@
     <fmt:setBundle basename="locale"/>
 </c:if>
 
-<form method="get" action="<c:url value='/index.jsp' />">
+<form method="get" action="<c:url value='index.jsp' />">
     <input type=submit value="Stay in session" hidden>
 </form>
 

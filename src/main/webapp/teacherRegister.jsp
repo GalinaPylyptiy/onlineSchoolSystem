@@ -7,14 +7,7 @@
 <html>
 <head>
     <title>Teacher register page</title>
-    <style>
-        body {
-            background-image: url("img/backgroundWelcome.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 <c:set var="typeList" value="${requestScope.typeList}"/>
@@ -43,5 +36,6 @@
     <p><label> <input type="radio" name="admin" value="false"><fmt:message key="msg.no"/> </label></p>
     <p> <input type="submit" name="submit" value="<fmt:message key="button.add.teacher"/> "></p>
 </form>
+<a href="<c:url value="admin.jsp"/> "> <fmt:message key="button.cancel"/> </a>
 </body>
 </html>

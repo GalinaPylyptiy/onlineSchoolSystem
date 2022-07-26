@@ -1,7 +1,7 @@
 package action;
 
 import dao.LevelDAO;
-import daoImpl.LevelDAOImpl;
+import dao.impl.LevelDAOImpl;
 import entity.Level;
 import static constants.ParameterAndAttributeNameConstants.*;
 import static constants.JSPPagesNameConstants.*;

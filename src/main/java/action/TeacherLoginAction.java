@@ -3,7 +3,7 @@ package action;
 import constants.ErrorConstants;
 import dao.TeacherDAO;
 import entity.Teacher;
-import daoImpl.TeacherDAOImpl;
+import dao.impl.TeacherDAOImpl;
 import util.AccessChecker;
 import util.Security;
 import static constants.ParameterAndAttributeNameConstants.*;
@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class TeacherLoginAction implements Action {
 
-    private TeacherDAO teacherService = new TeacherDAOImpl();
+    private TeacherDAO teacherDAO = new TeacherDAOImpl();
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,12 +24,12 @@ public class TeacherLoginAction implements Action {
         String password = request.getParameter(PASSWORD);
         String hashedPassword = Security.toHashPassword(password);
         if (AccessChecker.isTeacherRegistered(login,hashedPassword)){
-            Teacher teacher = teacherService.getTeacherByLoginAndPassword(login,hashedPassword);
+            Teacher teacher = teacherDAO.getTeacherByLoginAndPassword(login,hashedPassword);
             HttpSession session = request.getSession(true);
             session.setAttribute(TEACHER, teacher);
             request.getRequestDispatcher(TEACHER_JSP).forward(request, response);
         } else {
-            request.setAttribute(ErrorConstants.LOGIN_ERROR, LOGIN_ERROR_MSG);
+           request.setAttribute(ErrorConstants.LOGIN_ERROR, LOGIN_ERROR_MSG);
            request.getRequestDispatcher(LOGIN_ERROR_JSP).forward(request, response);
 
         }

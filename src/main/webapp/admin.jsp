@@ -6,14 +6,7 @@
 <html>
 <head>
     <title>Admin page</title>
-    <style>
-        body {
-            background-image: url("img/adminBackground.jpg");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/adminPage.css"/> "/>
 </head>
 <body>
 <c:set var="teacher" value="${sessionScope.teacher}"  />
@@ -21,10 +14,10 @@
 <table border="1" width="900" align="center" cellspacing="5" cellpadding="10">
     <tr>
         <th colspan="5">
-            ${teacher.lastName} ${teacher.firstName} ${teacher.middleName}</th>
+          <h1>${teacher.lastName} ${teacher.firstName} ${teacher.middleName}</h1>  </th>
     </tr>
     <tr align="center">
-        <td colspan="5"><fmt:message key="label.action.choose"/> </td>
+        <td colspan="5"><h1><fmt:message key="label.action.choose"/> </h1></td>
     </tr>
     <tr align="center">
         <td> <form method="get" action="/setAttributeForScheduleRecord">

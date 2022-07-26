@@ -6,14 +6,8 @@
 <html>
 <head>
     <title>student register</title>
-    <style>
-        body {
-            background-image: url("img/backgroundWelcome.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-    </style>
+
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 
@@ -32,5 +26,6 @@
     </select></label>
     <p> <input type="submit" name="submit" value="<fmt:message key="button.add.student"/> "></p>
 </form>
+<a href="<c:url value="admin.jsp"/> "> <fmt:message key="button.cancel"/> </a>
 </body>
 </html>

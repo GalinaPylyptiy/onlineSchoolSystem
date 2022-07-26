@@ -8,6 +8,7 @@
 <html>
 <head>
     <title>Teacher list</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 <c:set var="teacher" value="${sessionScope.newTeacher}"/>
@@ -15,18 +16,14 @@
 <c:set var="subjectLocaleList" value="${sessionScope.subjectLocaleList}"/>
 
 <h1><fmt:message key="msg.successful.record.add"/> </h1>
-
 <h2><fmt:message key="msg.teacher.name"/>${teacher.lastName} ${teacher.firstName} ${teacher.middleName}</h2>
 <h2><fmt:message key="label.typeName"/> ${teacher.type.typeName}</h2>
-
 <h2><fmt:message key="msg.subject.name"/>
     <c:forEach var="subjectLocale" items="${subjectLocaleList}">
                       ${subjectLocale.name}
     </c:forEach> </h2>
 
-
 <table border="1" width="900" align="center" cellspacing="5" cellpadding="10">
-
     <tr>
         <th>
             <fmt:message key="label.No"/>
@@ -46,7 +43,6 @@
         <th>
             <fmt:message key="button.delete.record"/>
         </th>
-
     </tr>
     <c:forEach var="teacher" items="${teacherList}">
         <tr>

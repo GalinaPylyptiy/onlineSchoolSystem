@@ -35,7 +35,9 @@ public class ParameterAndAttributeNameConstants {
     public static final String TEACHER_TYPE_LIST = "typeList" ;
     public static final String PASSWORD = "password";
     public static final String LOGIN  = "login";
+    public static final String SUBMIT  = "submit";
     public static final String ASSESSMENT_ERROR_MSG  = "This student already has grade for this lesson!";
+    public static final String SCHEDULE_RECORD_ERROR_MSG  = "This schedule record has already been added for this day and time!";
     public static final String LOGIN_ERROR_MSG  = "There is some problem with your login or password! Please, try again!";
     public static final String LAST_NAME  = "last name";
     public static final String FIRST_NAME  = "first name";

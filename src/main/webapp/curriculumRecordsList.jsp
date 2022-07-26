@@ -6,16 +6,9 @@
 <fmt:setBundle basename="locale"/>
 
 <html>
-<style>
-    body {
-        background-image: url('img/backgroundTeacher.jpg');
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-</style>
 <head>
     <title>Curriculum records</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 
 <body>
@@ -43,7 +36,12 @@
 
     <tr>
             <td>${record.id}</td>
-            <td>${record.lessonDate}</td>
+            <td>
+                <fmt:parseDate var="lessonDate" value="${record.lessonDate}" pattern="yyyy-MM-dd" type="date" dateStyle="short"/>
+                <fmt:formatDate var="formatedDate" value="${lessonDate}" pattern="dd.MM.yyyy" type="date" dateStyle="short"/>
+                    ${formatedDate}
+<%--                    ${record.lessonDate}--%>
+            </td>
             <td>${record.lessonTheme}</td>
             <td>${record.homeTask}</td>
             <td><a href="<c:url value="updateCurriculumRecord.jsp"/>?recordId=${record.id}">

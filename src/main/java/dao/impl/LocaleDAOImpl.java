@@ -1,4 +1,4 @@
-package daoImpl;
+package dao.impl;
 
 import connectionPool.ConnectionPool;
 import dao.LocaleDAO;
@@ -36,6 +36,9 @@ public class LocaleDAOImpl implements LocaleDAO {
         } catch (SQLException e) {
             LOGGER.error(e.fillInStackTrace(), e.getCause());
         }
+        finally {
+            connectionPool.releaseConnection(connection);
+        }
         return locale;
     }
     @Override
@@ -53,6 +56,9 @@ public class LocaleDAOImpl implements LocaleDAO {
             }
         } catch (SQLException e) {
             LOGGER.error(e.fillInStackTrace(), e.getCause());
+        }
+        finally {
+            connectionPool.releaseConnection(connection);
         }
         return localeList;
     }

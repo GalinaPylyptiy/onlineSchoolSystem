@@ -6,8 +6,8 @@
 <fmt:setBundle basename="locale"/>
 <html>
 <head>
-    <title>watch home task</title>
-
+    <title>Watch home task</title>
+    <link type="text/css" rel="stylesheet" href="<c:url value="css/commonPage.css"/> "/>
 </head>
 <body>
 
